@@ -403,7 +403,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
             [layer setFillColor:[self backgroundColor].CGColor];
             [layer setDelegate:nil];
             [layer setZPosition:0];
-            CATextLayer *textLayer = [[layer sublayers] objectAtIndex:0];
+            CATextLayer *textLayer = (CATextLayer*) [[layer sublayers] objectAtIndex:0];
             [textLayer setHidden:YES];
         }
         
@@ -563,7 +563,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
                 [_delegate pieChart:self didSelectSliceAtIndex:newSelection];
         }
     }else if (newSelection != -1){
-        SliceLayer *layer = [_pieView.layer.sublayers objectAtIndex:newSelection];
+        SliceLayer *layer = (SliceLayer*) [_pieView.layer.sublayers objectAtIndex:newSelection];
         if(_selectedSliceOffsetRadius > 0 && layer){
             if (layer.isSelected) {
                 if ([_delegate respondsToSelector:@selector(pieChart:willDeselectSliceAtIndex:)])
